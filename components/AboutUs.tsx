@@ -17,7 +17,7 @@ export default function AboutUs() {
 
         {/* Who We Are Section */}
         <div
-          className="relative p-10 rounded-lg bg-white border-[3px] border-transparent"
+          className="relative p-10 rounded-lg bg-white border-[4px] border-transparent"
           style={{
             borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
           }}
@@ -62,7 +62,7 @@ export default function AboutUs() {
           ].map((item, index) => (
             <div
               key={index}
-              className="relative p-8 rounded-lg bg-white border-[3px] border-transparent"
+              className="relative p-8 rounded-lg bg-white border-[4px] border-transparent"
               style={{
                 borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
               }}
@@ -80,7 +80,7 @@ export default function AboutUs() {
 
         {/* Why Choose Us Section */}
         <div
-  className="relative p-10 rounded-lg bg-white border-[3px] border-transparent mt-12"
+  className="relative p-10 rounded-lg bg-white border-[4px] border-transparent mt-12"
   style={{
     borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
   }}
