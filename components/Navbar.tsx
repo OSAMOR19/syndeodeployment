@@ -10,6 +10,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [isHovering, setIsHovering] = useState("");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -69,6 +70,15 @@ export default function Navbar() {
     }
   };
 
+  // CSS for gradient text
+  const gradientTextStyle = {
+    background: "linear-gradient(to right, #2A007A, #6642EC, #F15A29)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+    textFillColor: "transparent"
+  };
+
   return (
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-8 transition-all duration-300 ${
@@ -103,12 +113,19 @@ export default function Navbar() {
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            onMouseEnter={() => setIsHovering("home")}
+            onMouseLeave={() => setIsHovering("")}
           >
             <Link 
               href="/" 
-              className={`text-sm font-medium hover:text-[#F15A29] transition-colors ${
-                activeSection === "" ? "text-[#F15A29]" : ""
+              className={`text-sm font-medium transition-colors ${
+                activeSection === "" 
+                  ? "text-[#F15A29]" 
+                  : isHovering === "home" 
+                    ? "" 
+                    : "text-[#252C32] hover:text-[#F15A29]"
               }`}
+              style={isHovering === "home" ? gradientTextStyle : {}}
             >
               Home
             </Link>
@@ -117,6 +134,8 @@ export default function Navbar() {
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            onMouseEnter={() => setIsHovering("about")}
+            onMouseLeave={() => setIsHovering("")}
           >
             <Link 
               href="#about" 
@@ -124,9 +143,14 @@ export default function Navbar() {
                 e.preventDefault();
                 scrollToSection("about");
               }}
-              className={`text-sm font-medium hover:text-[#F15A29] transition-colors ${
-                activeSection === "about" ? "text-[#F15A29]" : ""
+              className={`text-sm font-medium transition-colors ${
+                activeSection === "about" 
+                  ? "text-[#F15A29]" 
+                  : isHovering === "about" 
+                    ? "" 
+                    : "text-[#252C32] hover:text-[#F15A29]"
               }`}
+              style={isHovering === "about" ? gradientTextStyle : {}}
             >
               About us
             </Link>
@@ -135,6 +159,8 @@ export default function Navbar() {
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            onMouseEnter={() => setIsHovering("what-we-do")}
+            onMouseLeave={() => setIsHovering("")}
           >
             <Link 
               href="#what-we-do" 
@@ -142,9 +168,14 @@ export default function Navbar() {
                 e.preventDefault();
                 scrollToSection("what-we-do");
               }}
-              className={`text-sm font-medium hover:text-[#F15A29] transition-colors ${
-                activeSection === "what-we-do" ? "text-[#F15A29]" : ""
+              className={`text-sm font-medium transition-colors ${
+                activeSection === "what-we-do" 
+                  ? "text-[#F15A29]" 
+                  : isHovering === "what-we-do" 
+                    ? "" 
+                    : "text-[#252C32] hover:text-[#F15A29]"
               }`}
+              style={isHovering === "what-we-do" ? gradientTextStyle : {}}
             >
               What we do
             </Link>
@@ -153,6 +184,8 @@ export default function Navbar() {
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            onMouseEnter={() => setIsHovering("services")}
+            onMouseLeave={() => setIsHovering("")}
           >
             <Link 
               href="#services" 
@@ -160,9 +193,14 @@ export default function Navbar() {
                 e.preventDefault();
                 scrollToSection("services");
               }}
-              className={`text-sm font-medium hover:text-[#F15A29] transition-colors ${
-                activeSection === "services" ? "text-[#F15A29]" : ""
+              className={`text-sm font-medium transition-colors ${
+                activeSection === "services" 
+                  ? "text-[#F15A29]" 
+                  : isHovering === "services" 
+                    ? "" 
+                    : "text-[#252C32] hover:text-[#F15A29]"
               }`}
+              style={isHovering === "services" ? gradientTextStyle : {}}
             >
               Services
             </Link>
@@ -171,10 +209,15 @@ export default function Navbar() {
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            onMouseEnter={() => setIsHovering("contact")}
+            onMouseLeave={() => setIsHovering("")}
           >
             <Link 
               href="/contact" 
-              className="text-sm font-medium hover:text-[#F15A29] transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                isHovering === "contact" ? "" : "text-[#252C32] hover:text-[#F15A29]"
+              }`}
+              style={isHovering === "contact" ? gradientTextStyle : {}}
             >
               Contact Us
             </Link>
@@ -255,11 +298,14 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
                 whileHover={{ x: 5 }}
+                onMouseEnter={() => setIsHovering("mobile-home")}
+                onMouseLeave={() => setIsHovering("")}
               >
                 <Link 
                   href="/" 
-                  className="text-base font-medium text-[#252C32] hover:text-[#F15A29] transition-colors"
+                  className="text-base font-medium text-[#252C32] transition-colors"
                   onClick={() => setIsMenuOpen(false)}
+                  style={isHovering === "mobile-home" ? gradientTextStyle : {}}
                 >
                   Home
                 </Link>
@@ -270,14 +316,17 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ x: 5 }}
+                onMouseEnter={() => setIsHovering("mobile-about")}
+                onMouseLeave={() => setIsHovering("")}
               >
                 <Link 
                   href="#about" 
-                  className="text-base font-medium text-[#252C32] hover:text-[#F15A29] transition-colors"
+                  className="text-base font-medium text-[#252C32] transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection("about");
                   }}
+                  style={isHovering === "mobile-about" ? gradientTextStyle : {}}
                 >
                   About us
                 </Link>
@@ -288,14 +337,17 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
                 whileHover={{ x: 5 }}
+                onMouseEnter={() => setIsHovering("mobile-what-we-do")}
+                onMouseLeave={() => setIsHovering("")}
               >
                 <Link 
                   href="#what-we-do" 
-                  className="text-base font-medium text-[#252C32] hover:text-[#F15A29] transition-colors"
+                  className="text-base font-medium text-[#252C32] transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection("what-we-do");
                   }}
+                  style={isHovering === "mobile-what-we-do" ? gradientTextStyle : {}}
                 >
                   What we do
                 </Link>
@@ -306,14 +358,17 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
                 whileHover={{ x: 5 }}
+                onMouseEnter={() => setIsHovering("mobile-services")}
+                onMouseLeave={() => setIsHovering("")}
               >
                 <Link 
                   href="#services" 
-                  className="text-base font-medium text-[#252C32] hover:text-[#F15A29] transition-colors"
+                  className="text-base font-medium text-[#252C32] transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection("services");
                   }}
+                  style={isHovering === "mobile-services" ? gradientTextStyle : {}}
                 >
                   Services
                 </Link>
@@ -324,11 +379,14 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
                 whileHover={{ x: 5 }}
+                onMouseEnter={() => setIsHovering("mobile-contact")}
+                onMouseLeave={() => setIsHovering("")}
               >
                 <Link 
                   href="/contact" 
-                  className="text-base font-medium text-[#252C32] hover:text-[#F15A29] transition-colors"
+                  className="text-base font-medium text-[#252C32] transition-colors"
                   onClick={() => setIsMenuOpen(false)}
+                  style={isHovering === "mobile-contact" ? gradientTextStyle : {}}
                 >
                   Contact Us
                 </Link>

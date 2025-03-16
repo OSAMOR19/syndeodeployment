@@ -9,7 +9,7 @@ export default function ContactPage() {
       <Navbar />
       
       <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-14">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <h2 className="text-3xl mt-9 md:text-4xl font-bold text-[#2A007A]">Get in touch</h2>

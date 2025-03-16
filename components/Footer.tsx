@@ -31,25 +31,25 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium mb-4 uppercase">COMPANY</h3>
+            <h3 className="text-sm text-muted-foreground font-medium mb-4 uppercase">COMPANY</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/#about" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="/#about" className="text-sm  font-medium hover:text-[#6642EC]">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/#what-we-do" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="/#what-we-do" className="text-sm font-medium  hover:text-[#6642EC]">
                   What We Do
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="/#services" className="text-sm font-medium hover:text-[#6642EC]">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="/contact" className="text-sm font-medium hover:text-[#6642EC]">
                   Contact Us
                 </Link>
               </li>
@@ -57,20 +57,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium mb-4 uppercase">HELP</h3>
+            <h3 className="text-sm text-muted-foreground mb-4 uppercase">HELP</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="#" className="text-sm font-medium hover:text-[#6642EC]">
                   Customer Support
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="#" className="text-sm font-medium hover:text-[#6642EC]">
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-[#6642EC]">
+                <Link href="#" className="text-sm font-medium hover:text-[#6642EC]">
                   Privacy Policy
                 </Link>
               </li>
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium mb-4 uppercase">NEWSLETTER</h3>
+            <h3 className="text-sm text-muted-foreground mb-4 uppercase">NEWSLETTER</h3>
             <div className="space-y-4">
               <input
                 type="email"
