@@ -6,6 +6,7 @@ import Mission from "@/components/images/mission.svg";
 import Vision from "@/components/images/vision.svg";
 import Philosophy from "@/components/images/philosophy.svg";
 import Whychose from "@/components/images/whychose.svg";
+import bullet from "@/components/images/bulletpoint2.svg";
 
 export default function AboutUs() {
   return (
@@ -78,43 +79,48 @@ export default function AboutUs() {
           ))}
         </div>
 
-        {/* Why Choose Us Section */}
+        {/* Why Choose Us Section - Updated to match screenshot */}
         <div
-  className="relative p-10 rounded-lg bg-white border-[4px] border-transparent mt-12"
-  style={{
-    borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
-  }}
->
-  <div className="flex justify-center items-center space-x-4">
-    <Image src={Whychose} alt="Why Choose Us" width={60} height={60} />
-    <h3 className="text-2xl font-semibold text-[#2A007A]">Why Choose Us</h3>
-  </div>
-  <div className="grid md:grid-cols-1 gap-6 justify-center mt-6">
-    {["Top-Notch Customer Care: We Offer Round-The-Clock Customer Support To Our Clients.",
-      "Reliable Service: We Provide Fast And Reliable Internet Service Using Cutting-Edge Technology, Ensuring 99.9% Network Uptime To Boost Your Business.",
-    ].map((reason, i) => (
-      <div
-        key={i}
-        className="flex items-center p-4  rounded-lg"
-      >
-        <div className="h-8 w-8 rounded-full bg-[#2A007A] text-white flex items-center justify-center mr-3 flex-shrink-0">
-          <span className="font-bold text-sm">{i + 1}</span>
+          className="relative p-10 rounded-lg bg-white border-[4px] border-transparent mt-12"
+          style={{
+            borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
+          }}
+        >
+          <div className="flex justify-center items-center space-x-4 mb-8">
+            <Image src={Whychose} alt="Why Choose Us" width={60} height={60} />
+            <h3 className="text-2xl font-semibold text-[#2A007A]">
+              Why Choose Us
+            </h3>
+          </div>
+          
+          <div className="flex flex-col text-5xl items-center space-y-6">
+            {[
+              "Top-Notch Customer Care: We Offer Round-The-Clock Customer Support To Our Clients.",
+              "Reliable Service: We Provide Fast And Reliable Internet Service Using Cutting-Edge Technology, Ensuring 99.9% Network Uptime To Boost Your Business.",
+            ].map((reason, i) => (
+              <div key={i} className="flex items-center justify-center text-center max-w-3xl">
+                <div className="flex-shrink-0 items-start mr-4">
+                  <Image src={bullet} alt="Bullet point" width={20} height={20} />
+                </div>
+                <p className="text-base">{reason}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="text-sm text-left">{reason}</p>
-      </div>
-    ))}
-  </div>
-</div>
       </div>
       <section id="what-we-do" className="py-10">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-8">What we do?</h2>
-        <p className="text-center text-black max-w-3xl mx-auto mb-2">
-          We are committed to empowering our clients with technology to boost their productivity and offering digital
-          services that add value for their customers, meeting their needs and giving them a competitive edge.
-        </p>
-      </div>
-    </section>
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-8">
+            What we do?
+          </h2>
+          <p className="text-center text-black max-w-3xl mx-auto mb-2">
+            We are committed to empowering our clients with technology to boost
+            their productivity and offering digital services that add value for
+            their customers, meeting their needs and giving them a competitive
+            edge.
+          </p>
+        </div>
+      </section>
     </section>
   );
 }

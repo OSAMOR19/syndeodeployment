@@ -5,7 +5,7 @@ import Logo from "@/components/images/syndeologo.svg"
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 py-12">
+    <footer className="bg-[#EDEFFF] py-12">
       <div className="container px-4 md:px-6">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -20,7 +20,7 @@ export default function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm leading-8 text-muted-foreground">
               Thank you for your interest in Syndeo Solutions International LTD. We are grateful for your inquiry and
               are eager to address any questions you may have.
             </p>

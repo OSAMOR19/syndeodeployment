@@ -3,17 +3,17 @@ import { useState, FormEvent } from "react";
 import { Check, Zap, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import checkpic from "@/components/images/check.svg";
+import bulletpoint from "@/components/images/butlletpoint.svg";
+import bulletcheck from "@/components/images/butlletecheck.svg";
+import serviceicon from "@/components/images/serviceicon.svg";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function OurServices() {
-  const [showContactModal, setShowContactModal] = useState(false);
   const [showQuoteModal, setShowQuoteModal] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [currentService, setCurrentService] = useState("");
-
-  const openContactModal = (service: string) => {
-    setCurrentService(service);
-    setShowContactModal(true);
-  };
 
   const openQuoteModal = (service: string) => {
     setCurrentService(service);
@@ -22,11 +22,7 @@ export default function OurServices() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (showContactModal) {
-      setShowContactModal(false);
-    } else {
-      setShowQuoteModal(false);
-    }
+    setShowQuoteModal(false);
     setShowConfirmation(true);
   };
 
@@ -59,7 +55,7 @@ export default function OurServices() {
   };
 
   return (
-    <section id="services" className="py-2 bg-[#FEF4EE] md:py-2 bg-gray-50">
+    <section id="services" className="py-2 bg-[#FEF4EE] md:py-2 ">
       <div className="container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -85,92 +81,86 @@ export default function OurServices() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div
-            className="rounded-xl shadow-lg p-6 text-white h-full flex flex-col max-w-md"
-            style={{ background: "linear-gradient(18deg, #F15A29 0%, #2A007A 100%)" }}
+            className="rounded-xl shadow-lg p-6 text-white h-full flex flex-col"
+            style={{ 
+              background: "linear-gradient(18deg, #F15A29 0%, #2A007A 100%)",
+              width: "100%",
+              maxWidth: "379px",
+              height: "500px"
+            }}
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <h3 className="text-xl font-semibold text-center mb-4">FIBER INTERNET</h3>
-            <p className="text-sm text-center mb-6 flex-grow">
+            <p className="text-sm text-center mb-2 flex-grow">
               Surf the web with lightning speed using our Fiber Internet service. Experience fast browsing and
               downloads for your home or business.
             </p>
-            <Button 
-              className="w-full bg-white text-[#2A007A] hover:bg-white/90"
-              onClick={() => openContactModal("FIBER INTERNET")}
-            >
-              Contact Sales
-            </Button>
+            <Link href="/contact">
+              <Button 
+                className="w-full bg-white text-[#2A007A] hover:bg-white/90"
+              >
+                Contact Sales
+              </Button>
+            </Link>
             <div className="mt-6 space-y-3">
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Complimentary VoIP unified communication solution</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">All Bandwidth Size Available</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Versatile Deployment</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Unlimited Sharing</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Personalized Support</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Unlimited Internet</p>
-              </div>
+              {[
+                "Complimentary VoIP unified communication solution",
+                "All Bandwidth Size Available",
+                "Versatile Deployment",
+                "Unlimited Sharing",
+                "Personalized Support",
+                "Unlimited Internet"
+              ].map((feature, i) => (
+                <div key={i} className="flex items-start">
+                  <div className="flex-shrink-0 mr-2 mt-1">
+                    <Image src={bulletpoint} alt="Bullet point" width={16} height={16} />
+                  </div>
+                  <p className="text-sm">{feature}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
 
           <motion.div
-            className="rounded-xl shadow-lg p-6 text-white h-full flex flex-col max-w-md"
-            style={{ background: "linear-gradient(18deg, #F15A29 0%, #2A007A 100%)" }}
+            className="rounded-xl shadow-lg p-6 text-white h-full flex flex-col"
+            style={{ 
+              background: "linear-gradient(18deg, #F15A29 0%, #2A007A 100%)",
+              width: "100%",
+              maxWidth: "379px",
+              height: "500px"
+            }}
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <h3 className="text-xl font-semibold text-center mb-4">UNLIMITED WIFI INTERNET</h3>
-            <p className="text-sm text-center mb-6 flex-grow">
+            <p className="text-sm text-center mb-2 flex-grow">
               Offering high-speed broadband internet services to residences, businesses, events, and conferences, and
               deploying public Wi-Fi hotspots throughout Nigeria.
             </p>
-            <Button 
-              className="w-full bg-white text-[#2A007A] hover:bg-white/90"
-              onClick={() => openContactModal("UNLIMITED WIFI INTERNET")}
-            >
-              Contact Sales
-            </Button>
+            <Link href="/contact">
+              <Button 
+                className="w-full bg-white text-[#2A007A] hover:bg-white/90"
+              >
+                Contact Sales
+              </Button>
+            </Link>
             <div className="mt-6 space-y-3">
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Complimentary VoIP unified communication solution</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">All Bandwidth Size Available</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Versatile Deployment</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Unlimited Sharing</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Personalized Support</p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                <p className="text-sm">Unlimited Internet</p>
-              </div>
+              {[
+                "Complimentary VoIP unified communication solution",
+                "All Bandwidth Size Available",
+                "Versatile Deployment",
+                "Unlimited Sharing",
+                "Personalized Support",
+                "Unlimited Internet"
+              ].map((feature, i) => (
+                <div key={i} className="flex items-start">
+                  <div className="flex-shrink-0 mr-2 mt-1">
+                    <Image src={bulletpoint} alt="Bullet point" width={16} height={16} />
+                  </div>
+                  <p className="text-sm">{feature}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
@@ -190,7 +180,7 @@ export default function OurServices() {
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Zap className="h-6 w-6 text-[#6642EC]" />
+                <Image src={serviceicon} alt="Service Icon" width={30} height={30} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">
@@ -215,7 +205,7 @@ export default function OurServices() {
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Zap className="h-6 w-6 text-[#6642EC]" />
+                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">PBX Services</h3>
@@ -238,7 +228,7 @@ export default function OurServices() {
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Zap className="h-6 w-6 text-[#6642EC]" />
+                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">Virtual numbers (DID)</h3>
@@ -254,16 +244,24 @@ export default function OurServices() {
               Get A Quote
             </Button>
           </motion.div>
+        </motion.div>
           
-          {/* Center these two services on mobile and make them justified and centralized */}
+        {/* Center these two services */}
+        <motion.div 
+          className="flex flex-col md:flex-row justify-center gap-8 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full mx-auto md:mx-0 max-w-md md:max-w-none md:col-span-1 lg:col-span-1"
+            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-full max-w-md"
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Zap className="h-6 w-6 text-[#6642EC]" />
+                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">VoIP Carrier Services</h3>
@@ -273,22 +271,18 @@ export default function OurServices() {
               solution can help your company.
             </p>
             <div className="space-y-2 mb-6">
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  Effortlessly connect with team both within and outside your organization
-                </p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  Simplify the transfer of existing phone numbers to our system
-                </p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">Facilitate seamless communication within your network</p>
-              </div>
+              {[
+                "Effortlessly connect with team both within and outside your organization",
+                "Simplify the transfer of existing phone numbers to our system",
+                "Facilitate seamless communication within your network"
+              ].map((feature, i) => (
+                <div key={i} className="flex items-start">
+                  <div className="flex-shrink-0 mr-2 mt-1">
+                    <Image src={bulletcheck} alt="Bullet check" width={16} height={16} />
+                  </div>
+                  <p className="text-sm text-muted-foreground">{feature}</p>
+                </div>
+              ))}
             </div>
             <Button 
               className="w-full bg-[#6642EC] hover:bg-[#6642EC]/90 text-white mt-auto"
@@ -299,13 +293,13 @@ export default function OurServices() {
           </motion.div>
 
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full mx-auto md:mx-0 max-w-md md:max-w-none md:col-span-1 lg:col-span-1"
+            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-full max-w-md"
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Zap className="h-6 w-6 text-[#6642EC]" />
+                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">Session Initiation Protocol</h3>
@@ -315,24 +309,18 @@ export default function OurServices() {
               transformation.
             </p>
             <div className="space-y-2 mb-6">
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  Ensuring high quality calling on a large scale is consistently guaranteed
-                </p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  Our Dashboard's API suite streamlines ports, orders, and cost insights
-                </p>
-              </div>
-              <div className="flex items-start">
-                <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  We help enterprises navigate the cloud communications transition for long-term success
-                </p>
-              </div>
+              {[
+                "Ensuring high quality calling on a large scale is consistently guaranteed",
+                "Our Dashboard's API suite streamlines ports, orders, and cost insights",
+                "We help enterprises navigate the cloud communications transition for long-term success"
+              ].map((feature, i) => (
+                <div key={i} className="flex items-start">
+                  <div className="flex-shrink-0 mr-2 mt-1">
+                    <Image src={bulletcheck} alt="Bullet check" width={16} height={16} />
+                  </div>
+                  <p className="text-sm text-muted-foreground">{feature}</p>
+                </div>
+              ))}
             </div>
             <Button 
               className="w-full bg-[#6642EC] hover:bg-[#6642EC]/90 text-white mt-auto" 
@@ -344,8 +332,8 @@ export default function OurServices() {
         </motion.div>
       </div>
 
-      {/* Contact Sales Modal */}
-      {showContactModal && (
+      {/* Quote Modal */}
+      {showQuoteModal && (
         <motion.div 
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
           initial={{ opacity: 0 }}
@@ -359,7 +347,7 @@ export default function OurServices() {
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
           >
             <button 
-              onClick={() => setShowContactModal(false)}
+              onClick={() => setShowQuoteModal(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
             >
               <X size={20} />
@@ -403,83 +391,6 @@ export default function OurServices() {
                 <div className="flex gap-4 pt-2">
                   <button 
                     type="button" 
-                    onClick={() => setShowContactModal(false)}
-                    className="w-1/2 p-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    type="submit" 
-                    className="w-1/2 p-2 bg-[#F15A29] text-white rounded-md hover:bg-[#F15A29]/90"
-                  >
-                    Send
-                  </button>
-                </div>
-              </div>
-            </form>
-          </motion.div>
-        </motion.div>
-      )}
-
-      {/* Quote Modal */}
-      {showQuoteModal && (
-        <motion.div 
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md relative"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", damping: 20, stiffness: 300 }}
-          >
-            <button 
-              onClick={() => setShowQuoteModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <X size={20} />
-            </button>
-            <h3 className="text-xl font-semibold text-center mb-4">{currentService}</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="quote-name" className="block text-sm text-gray-600 mb-1">Name</label>
-                  <input 
-                    type="text" 
-                    id="quote-name" 
-                    placeholder="John Doe" 
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="quote-email" className="block text-sm text-gray-600 mb-1">Email</label>
-                  <input 
-                    type="email" 
-                    id="quote-email" 
-                    placeholder="example@mail.com" 
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="quote-phone" className="block text-sm text-gray-600 mb-1">Phone Number</label>
-                  <input 
-                    type="tel" 
-                    id="quote-phone" 
-                    placeholder="1234 5678 1234" 
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
-                
-                <div className="flex gap-4 pt-2">
-                  <button 
-                    type="button" 
                     onClick={() => setShowQuoteModal(false)}
                     className="w-1/2 p-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
                   >
@@ -487,7 +398,7 @@ export default function OurServices() {
                   </button>
                   <button 
                     type="submit" 
-                    className="w-1/2 p-2 bg-[#6642EC] text-white rounded-md hover:bg-[#6642EC]/90"
+                    className="w-1/2 p-2 bg-[#F15A29] text-white rounded-md hover:bg-[#6642EC]/90"
                   >
                     Send
                   </button>
