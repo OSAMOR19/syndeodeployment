@@ -25,7 +25,7 @@ export default function Footer() {
               are eager to address any questions you may have.
             </p>
             <div className="text-sm text-muted-foreground">
-              <p>Email: xxxxx@syndeoitd.com</p>
+              <p>Email: support@syndeolltd.com</p>
               <p>Call: XXXXXXXXXX</p>
             </div>
           </div>

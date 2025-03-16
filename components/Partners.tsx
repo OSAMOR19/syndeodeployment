@@ -9,20 +9,22 @@ import img4 from "@/components/images/Pt1.svg"
 
 export default function Partners() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    const checkIfMobile = () => {
+    const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
     
     // Initial check
-    checkIfMobile();
+    checkScreenSize();
     
     // Add event listener for window resize
-    window.addEventListener('resize', checkIfMobile);
+    window.addEventListener('resize', checkScreenSize);
     
     // Cleanup
-    return () => window.removeEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   const partnerImages = [
@@ -30,7 +32,7 @@ export default function Partners() {
     { src: img2, alt: "Microsoft" },
     { src: img3, alt: "Amazon" },
     { src: img4, alt: "Sky" },
-    // Duplicate for continuous marquee effect on mobile
+    // Duplicate for continuous marquee effect on mobile/tablet
     { src: img1, alt: "Google" },
     { src: img2, alt: "Microsoft" },
     { src: img3, alt: "Amazon" },
@@ -39,12 +41,12 @@ export default function Partners() {
 
   const containerVariants = {
     animate: {
-      x: isMobile ? [0, -1000] : 0,
+      x: isMobile || isTablet ? [0, -1000] : 0,
       transition: {
         x: {
           repeat: Infinity,
           repeatType: "loop",
-          duration: 20,
+          duration: isMobile ? 20 : isTablet ? 25 : 0,
           ease: "linear",
         },
       },
@@ -52,14 +54,14 @@ export default function Partners() {
   };
 
   return (
-    <section className="py-8 bg-[#252C32] text-white overflow-hidden">
+    <section className="py-6 md:py-8 bg-[#252C32] text-white overflow-hidden">
       <div className="container px-4 md:px-6 w-full">
         <motion.div 
-          className={`flex items-center ${isMobile ? 'space-x-8' : 'justify-around space-x-2'} flex-nowrap`}
+          className={`flex items-center ${isMobile || isTablet ? 'space-x-8' : 'justify-around space-x-2'} flex-nowrap`}
           variants={containerVariants}
           animate="animate"
         >
-          {partnerImages.slice(0, isMobile ? 8 : 4).map((img, index) => (
+          {partnerImages.slice(0, isMobile || isTablet ? 8 : 4).map((img, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -71,13 +73,16 @@ export default function Partners() {
                 stiffness: 100 
               }}
               whileHover={{ scale: 1.1 }}
-              className={isMobile ? 'min-w-[150px]' : ''}
+              className={isMobile ? 'min-w-[150px]' : isTablet ? 'min-w-[180px]' : ''}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={img.alt === "Sky" ? 100 : img.alt === "Amazon" ? 200 : img.alt === "Microsoft" ? 242 : 196}
-                height={img.alt === "Amazon" ? 60 : 50}
+                width={img.alt === "Sky" ? (isTablet ? 120 : 100) : 
+                       img.alt === "Amazon" ? (isTablet ? 220 : 200) : 
+                       img.alt === "Microsoft" ? (isTablet ? 260 : 242) : 
+                       (isTablet ? 210 : 196)}
+                height={img.alt === "Amazon" ? (isTablet ? 65 : 60) : (isTablet ? 55 : 50)}
                 className="object-contain filter brightness-0 invert"
               />
             </motion.div>

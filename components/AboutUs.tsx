@@ -10,22 +10,22 @@ import bullet from "@/components/images/bulletpoint2.svg";
 
 export default function AboutUs() {
   return (
-    <section id="about" className="py-14 md:py-24 bg-gray-50">
-      <div className="container px-10 md:px-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-16">
+    <section id="about" className="py-14 md:py-20 lg:py-24 bg-gray-50">
+      <div className="container px-4 sm:px-6 md:px-10 lg:px-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-10 md:mb-16">
           About Us
         </h2>
 
         {/* Who We Are Section */}
         <div
-          className="relative p-10 rounded-lg bg-white border-[4px] border-transparent"
+          className="relative p-6 md:p-8 lg:p-10 rounded-lg bg-white border-[4px] border-transparent"
           style={{
             borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
           }}
         >
           <div className="flex justify-center items-center space-x-4">
             <Image src={Whowe} alt="Who We Are" width={60} height={60} />
-            <h3 className="text-2xl font-semibold text-[#252C32]">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#252C32]">
               Who We Are?
             </h3>
           </div>
@@ -42,8 +42,8 @@ export default function AboutUs() {
           </p>
         </div>
 
-        {/* Three-Column Section */}
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
+        {/* Three-Column Section - Updated for tablet responsiveness */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-8 md:mt-12">
           {[
             {
               img: Mission,
@@ -63,57 +63,59 @@ export default function AboutUs() {
           ].map((item, index) => (
             <div
               key={index}
-              className="relative p-8 rounded-lg bg-white border-[4px] border-transparent"
+              className="relative p-5 sm:p-6 md:p-8 rounded-lg bg-white border-[4px] border-transparent mx-auto sm:max-w-[500px] md:max-w-none"
               style={{
                 borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
               }}
             >
-              <div className="flex justify-center items-center space-x-4">
-                <Image src={item.img} alt={item.title} width={50} height={50} />
-                <h3 className="text-xl font-semibold text-[#252C32]">
+              <div className="flex flex-row justify-center items-center space-x-3">
+                <Image src={item.img} alt={item.title} width={50} height={50} className="w-10 h-10 md:w-12 md:h-12" />
+                <h3 className="text-lg sm:text-xl font-semibold text-[#252C32]">
                   {item.title}
                 </h3>
               </div>
-              <p className="mt-4 text-center text-[#252C32]">{item.text}</p>
+              <p className="mt-3 sm:mt-4 text-center text-[#252C32] text-sm sm:text-base">
+                {item.text}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Why Choose Us Section - Updated to match screenshot */}
+        {/* Why Choose Us Section */}
         <div
-          className="relative p-10 rounded-lg bg-white border-[4px] border-transparent mt-12"
+          className="relative p-6 md:p-8 lg:p-10 rounded-lg bg-white border-[4px] border-transparent mt-8 md:mt-12"
           style={{
             borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
           }}
         >
-          <div className="flex justify-center items-center space-x-4 mb-8">
+          <div className="flex justify-center items-center space-x-4 mb-6 md:mb-8">
             <Image src={Whychose} alt="Why Choose Us" width={60} height={60} />
-            <h3 className="text-2xl font-semibold text-[#2A007A]">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#2A007A]">
               Why Choose Us
             </h3>
           </div>
           
-          <div className="flex flex-col text-5xl items-center space-y-6">
+          <div className="flex flex-col items-center space-y-4 md:space-y-6">
             {[
               "Top-Notch Customer Care: We Offer Round-The-Clock Customer Support To Our Clients.",
               "Reliable Service: We Provide Fast And Reliable Internet Service Using Cutting-Edge Technology, Ensuring 99.9% Network Uptime To Boost Your Business.",
             ].map((reason, i) => (
-              <div key={i} className="flex items-center justify-center text-center max-w-3xl">
-                <div className="flex-shrink-0 items-start mr-4">
+              <div key={i} className="flex items-start justify-center text-center max-w-3xl px-2 sm:px-4">
+                <div className="flex-shrink-0 items-start mr-3 md:mr-4 mt-1">
                   <Image src={bullet} alt="Bullet point" width={20} height={20} />
                 </div>
-                <p className="text-base">{reason}</p>
+                <p className="text-sm sm:text-base">{reason}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <section id="what-we-do" className="py-10">
-        <div className="container px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-8">
+      <section id="what-we-do" className="py-8 md:py-10">
+        <div className="container px-4 sm:px-6 md:px-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-6 md:mb-8">
             What we do?
           </h2>
-          <p className="text-center text-black max-w-3xl mx-auto mb-2">
+          <p className="text-center text-black max-w-3xl mx-auto mb-2 text-sm sm:text-base">
             We are committed to empowering our clients with technology to boost
             their productivity and offering digital services that add value for
             their customers, meeting their needs and giving them a competitive
