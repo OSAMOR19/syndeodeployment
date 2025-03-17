@@ -54,8 +54,8 @@ export default function Partners() {
   };
 
   return (
-    <section className="py-6 md:py-8 bg-[#252C32] text-white overflow-hidden">
-      <div className="container px-4 md:px-6 w-full">
+    <section className="py-6 mx-auto  md:py-8 bg-[#252C32] text-white overflow-hidden">
+      <div className="container px-4 md:mx-auto  w-full">
         <motion.div 
           className={`flex items-center ${isMobile || isTablet ? 'space-x-8' : 'justify-around space-x-2'} flex-nowrap`}
           variants={containerVariants}

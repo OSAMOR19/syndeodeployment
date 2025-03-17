@@ -6,7 +6,7 @@ import Logo from "@/components/images/syndeologo.svg"
 export default function Footer() {
   return (
     <footer className="bg-[#EDEFFF] py-12">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:mx-auto ">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center">

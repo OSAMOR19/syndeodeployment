@@ -10,8 +10,8 @@ import bullet from "@/components/images/bulletpoint2.svg";
 
 export default function AboutUs() {
   return (
-    <section id="about" className="py-14 md:py-20 lg:py-24 bg-gray-50">
-      <div className="container px-4 sm:px-6 md:px-10 lg:px-16">
+    <section id="about" className="py-14 mx-auto  md:py-20 lg:py-24 bg-gray-50">
+      <div className="container px-4 sm:px-6 md:mx-auto  lg:px-16">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-10 md:mb-16">
           About Us
         </h2>
@@ -29,7 +29,7 @@ export default function AboutUs() {
               Who We Are?
             </h3>
           </div>
-          <p className="mt-4 text-[#252C32]">
+          <p className="mt-4 text-center text-[#252C32]">
             SYNDEO SOLUTIONS INTERNATIONAL LTD is an NCC-licensed Internet
             Service Provider and a Private Network Link operator. Syndeo's
             purpose, values, and mission serve as a blueprint to steer the daily
@@ -43,7 +43,7 @@ export default function AboutUs() {
         </div>
 
         {/* Three-Column Section - Updated for tablet responsiveness */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-8 md:mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-8 md:mt-12">
           {[
             {
               img: Mission,
@@ -53,28 +53,28 @@ export default function AboutUs() {
             {
               img: Vision,
               title: "Vision",
-              text: "Our commitment to exceptional service, meticulous attention to detail, and outstanding performance have established us as a highly esteemed and in-demand technology company in Nigeria. Clients actively seek our expertise, fellow agents eagerly collaborate with us, and our members take pride in delivering remarkable results and experiencing continuous growth.",
+              text: "Our commitment to exceptional service, meticulous attention to detail, and outstanding performance have established us as a highly esteemed and in-demand technology company in Nigeria. Clients actively seek our expertise, fellow agents eagerly collaborate with us, and our team members take pride in delivering remarkable results and experiencing continuous growth.",
             },
             {
               img: Philosophy,
               title: "Philosophy",
-              text: "We aspire to lead a high-performance technology team that positively impacts our clients, our community, and ultimately the world. Our core values include family, respect, and giving back to those in need, which serve as the foundation of our lives and business.",
+              text: "We aspire to lead a high-performance Technology team that positively impacts our clients, our community, and ultimately the world. Our core values include family, respect, and giving back to those in need, which serve as the foundation of our lives and business.",
             },
           ].map((item, index) => (
             <div
               key={index}
-              className="relative p-5 sm:p-6 md:p-8 rounded-lg bg-white border-[4px] border-transparent mx-auto sm:max-w-[500px] md:max-w-none"
+              className="relative p-6 md:p-8 rounded-lg bg-white border-[4px] border-transparent w-full"
               style={{
                 borderImage: "linear-gradient(to right, #F15A29, #2A007A) 1",
               }}
             >
               <div className="flex flex-row justify-center items-center space-x-3">
-                <Image src={item.img} alt={item.title} width={50} height={50} className="w-10 h-10 md:w-12 md:h-12" />
-                <h3 className="text-lg sm:text-xl font-semibold text-[#252C32]">
+                <Image src={item.img} alt={item.title} width={50} height={50} className="w-12 h-12" />
+                <h3 className="text-xl font-semibold text-[#252C32]">
                   {item.title}
                 </h3>
               </div>
-              <p className="mt-3 sm:mt-4 text-center text-[#252C32] text-sm sm:text-base">
+              <p className="mt-4 text-center text-[#252C32]">
                 {item.text}
               </p>
             </div>
@@ -110,8 +110,8 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      <section id="what-we-do" className="py-8 md:py-10">
-        <div className="container px-4 sm:px-6 md:px-10">
+      <section id="what-we-do" className="py-8  md:py-10">
+        <div className="container px-4 sm:mx-auto  md:px-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#2A007A] mb-6 md:mb-8">
             What we do?
           </h2>

@@ -22,7 +22,7 @@ export default function ContactPage() {
     <main className="min-h-screen flex flex-col">
       <Navbar />
       
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 mx-auto">
         <div className="container px-4 md:px-14">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">

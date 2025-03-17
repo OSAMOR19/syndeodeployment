@@ -55,8 +55,8 @@ export default function OurServices() {
   };
 
   return (
-    <section id="services" className="py-2 bg-[#FEF4EE] md:py-2 ">
-      <div className="container px-4 md:px-6">
+    <section id="services" className="py-2 mx-auto  bg-[#FEF4EE] md:py-2 ">
+      <div className="container px-4 md:mx-auto ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -255,7 +255,7 @@ export default function OurServices() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-full max-w-md"
+            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-[384px] max-w-md"
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
@@ -293,7 +293,7 @@ export default function OurServices() {
           </motion.div>
 
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-full max-w-md"
+            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-[384px] max-w-auto"
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >

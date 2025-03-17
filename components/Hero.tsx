@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 export default function Hero() {
   return (
     <section className="pt-28 pb-12 md:pt-35 md:pb-16">
-      <div className="container px-4 md:px-6">
+      <div className="container mx-auto md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-8 items-center">
           <motion.div 
             className="space-y-4 pl-5"

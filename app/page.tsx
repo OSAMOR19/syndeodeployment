@@ -10,16 +10,15 @@ import OurServices from "@/components/OurServices"
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col">
-      <Navbar />
-      <Hero />
-      <Partners />
-      <AboutUs/>
-      <OurServices />
-      {/* Our Services Section */}
+    <main className="min-h-screen w-full overflow-x-hidden">
       
-
-      <Footer />
+        <Navbar />
+        <Hero />
+        <Partners />
+        <AboutUs/>
+        <OurServices />
+        <Footer />
+      
     </main>
   )
 }
