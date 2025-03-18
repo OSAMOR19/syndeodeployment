@@ -26,7 +26,7 @@ export default function Footer() {
             </p>
             <div className="text-sm text-muted-foreground">
               <p>Email: support@syndeolltd.com</p>
-              <p>Call: XXXXXXXXXX</p>
+              <p>Call: +2348096500000</p>
             </div>
           </div>
 
@@ -60,17 +60,17 @@ export default function Footer() {
             <h3 className="text-sm text-muted-foreground mb-4 uppercase">HELP</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-[#6642EC]">
+                <Link href="/contact" className="text-sm font-medium hover:text-[#6642EC]">
                   Customer Support
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-[#6642EC]">
+                <Link href="/contact" className="text-sm font-medium hover:text-[#6642EC]">
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-[#6642EC]">
+                <Link href="/contact" className="text-sm font-medium hover:text-[#6642EC]">
                   Privacy Policy
                 </Link>
               </li>

@@ -54,6 +54,11 @@ export default function OurServices() {
     }
   };
 
+  // ... existing code ...
+
+  // Add this constant at the top of your component, after the animation variants
+  const cardWidth = "w-full md:w-[384px]"; // Standard width for all cards
+
   return (
     <section id="services" className="py-2 mx-auto  bg-[#FEF4EE] md:py-2 ">
       <div className="container px-4 md:mx-auto ">
@@ -74,7 +79,7 @@ export default function OurServices() {
 
         {/* First row with main internet services - centered */}
         <motion.div 
-          className="flex flex-col md:flex-row justify-center gap-8 mb-12"
+          className="flex flex-col md:flex-row justify-center gap-10 mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -167,20 +172,20 @@ export default function OurServices() {
 
         {/* Second row with other services in grid */}
         <motion.div 
-          className="grid px-12 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="grid   md:grid-cols-2 lg:grid-cols-3 gap-md-6 gap-8 mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full"
+            className={`bg-white rounded-xl shadow-lg p-6 flex flex-col h-full ${cardWidth} mx-auto`}
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Image src={serviceicon} alt="Service Icon" width={30} height={30} />
+                <Image src={serviceicon} alt="Service Icon" width={55} height={55} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">
@@ -199,13 +204,13 @@ export default function OurServices() {
           </motion.div>
 
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full"
+            className={`bg-white rounded-xl shadow-lg p-6 flex flex-col h-full ${cardWidth} mx-auto`}
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
+                <Image src={serviceicon} alt="Service Icon" width={55} height={55} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">PBX Services</h3>
@@ -222,13 +227,13 @@ export default function OurServices() {
           </motion.div>
 
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full"
+            className={`bg-white rounded-xl shadow-lg p-6 flex flex-col h-full ${cardWidth} mx-auto`}
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
+                <Image src={serviceicon} alt="Service Icon" width={55} height={55} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">Virtual numbers (DID)</h3>
@@ -248,20 +253,20 @@ export default function OurServices() {
           
         {/* Center these two services */}
         <motion.div 
-          className="flex flex-col md:flex-row justify-center gap-8 mb-12"
+          className="flex flex-col  md:flex-row justify-center gap-8 mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full w-[384px] max-w-md"
+            className={`bg-white px-md-14 rounded-xl shadow-lg p-6 flex flex-col h-full ${cardWidth}`}
             variants={itemVariants}
             whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
+                <Image src={serviceicon} alt="Service Icon" width={55} height={55} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">VoIP Carrier Services</h3>
@@ -299,7 +304,7 @@ export default function OurServices() {
           >
             <div className="flex justify-center mb-4">
               <div className="h-12 w-12 rounded-full bg-[#6642EC]/10 flex items-center justify-center">
-                <Image src={serviceicon} alt="Service Icon" width={24} height={24} />
+                <Image src={serviceicon} alt="Service Icon" width={55} height={55} />
               </div>
             </div>
             <h3 className="text-xl font-semibold text-center text-[#6642EC] mb-3">Session Initiation Protocol</h3>

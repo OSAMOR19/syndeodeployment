@@ -17,6 +17,7 @@ export default function Home() {
         <Partners />
         <AboutUs/>
         <OurServices />
+       <div></div>
         <Footer />
       
     </main>
