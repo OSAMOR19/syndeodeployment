@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Heroimg from "@/components/images/heroimage.svg"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -69,9 +70,12 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-[#F15A29] hover:bg-[#F15A29]/90 text-white">
+                <Link href="/contact" >
+                <Button  className="bg-[#F15A29] hover:bg-[#F15A29]/90 text-white" >
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
+                </Link>
+                
               </motion.div>
             </motion.div>
           </motion.div>
