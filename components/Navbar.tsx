@@ -407,17 +407,12 @@ export default function Navbar() {
                 transition={{ delay: 0.6 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <Link href="#contact">
+                <Link href="/contact">
                   <Button 
                     className="w-full bg-white outline outline-2 outline-offset-2 outline-[#F15A29] hover:bg-white/90"
-                    style={gradientTextStyle}
+                    style={isHovering === "get-started" ? gradientTextStyle : { color: '#F15A29' }}
                     onMouseEnter={() => setIsHovering("get-started")}
                     onMouseLeave={() => setIsHovering("")}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection("contact");
-                      setIsMenuOpen(false);
-                    }}
                   >
                     Get Started
                   </Button>
@@ -433,9 +428,16 @@ export default function Navbar() {
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           className="hidden md:block"
         >
-          <Button className="bg-white outline outline-2 outline-offset-2 outline-[#F15A29] hover:bg-white/90 text-[#F15A29]">
-            Get Started
-          </Button>
+          <Link href="/contact">
+            <Button 
+              className="bg-white outline outline-2 outline-offset-2 outline-[#F15A29] hover:bg-white/90"
+              style={isHovering === "desktop-get-started" ? gradientTextStyle : { color: '#F15A29' }}
+              onMouseEnter={() => setIsHovering("desktop-get-started")}
+              onMouseLeave={() => setIsHovering("")}
+            >
+              Get Started
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </motion.header>
