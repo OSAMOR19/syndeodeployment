@@ -172,7 +172,7 @@ export default function OurServices() {
 
         {/* Second row with other services in grid */}
         <motion.div 
-          className="grid   md:grid-cols-2 lg:grid-cols-3 gap-md-6 gap-8 mb-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-1 mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

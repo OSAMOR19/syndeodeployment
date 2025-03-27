@@ -17,6 +17,52 @@ import { X } from "lucide-react"
 
 export default function ContactPage() {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false)
+  const [selectedCountry, setSelectedCountry] = useState("US")
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+  
+  const phoneNumberPlaceholders = {
+    US: "(555) 000-0000",
+    NG: "0800 000 0000",
+    UK: "020 0000 0000", 
+    CA: "(555) 000-0000"
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setSubmitError('')
+    setSubmitSuccess(false)
+    
+    try {
+      const formData = new FormData(e.currentTarget)
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          firstName: formData.get('first-name'),
+          lastName: formData.get('last-name'),
+          email: formData.get('email'),
+          phone: `${selectedCountry} ${formData.get('phone')}`,
+          message: formData.get('message')
+        }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to send message')
+      }
+
+      setSubmitSuccess(true)
+      e.currentTarget.reset()
+      setSelectedCountry("US")
+    } catch (error: any) {
+      setSubmitError(error.message || 'Failed to send message. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -29,7 +75,7 @@ export default function ContactPage() {
               <h2 className="text-3xl mt-9 md:text-4xl font-bold text-[#2A007A]">Get in touch</h2>
               <p className="text-muted-foreground">Our friendly team would love to hear from you.</p>
 
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="first-name" className="text-sm font-medium">
@@ -37,6 +83,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       id="first-name"
+                      name="first-name"
                       placeholder="First name"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md"
                       required
@@ -48,6 +95,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       id="last-name"
+                      name="last-name"
                       placeholder="Last name"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md"
                       required
@@ -61,6 +109,7 @@ export default function ContactPage() {
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="you@company.com"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md"
@@ -73,7 +122,12 @@ export default function ContactPage() {
                     Phone number
                   </label>
                   <div className="flex">
-                    <select className="px-3 py-2 border border-gray-300 rounded-l-md w-[80px]">
+                    <select 
+                      className="px-3 py-2 border border-gray-300 rounded-l-md w-[80px]"
+                      value={selectedCountry}
+                      onChange={(e) => setSelectedCountry(e.target.value)}
+                      name="country"
+                    >
                       <option value="US">US</option>
                       <option value="NG">NG</option>
                       <option value="UK">UK</option>
@@ -81,8 +135,9 @@ export default function ContactPage() {
                     </select>
                     <input
                       id="phone"
+                      name="phone"
                       type="tel"
-                      placeholder="(555) 000-0000"
+                      placeholder={phoneNumberPlaceholders[selectedCountry]}
                       className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md"
                       required
                     />
@@ -95,6 +150,7 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     placeholder="Tell us how we can help..."
                     className="w-full min-h-[120px] px-3 py-2 border border-gray-300 rounded-md"
                     required
@@ -115,9 +171,25 @@ export default function ContactPage() {
                   </label>
                 </div>
 
-                <Button type="submit" className="w-full bg-[#6642EC] hover:bg-[#6642EC]/90 text-white">
-                  Send message
+                <Button 
+                  type="submit" 
+                  className="w-full bg-[#6642EC] hover:bg-[#6642EC]/90 text-white"
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Sending...' : 'Send message'}
                 </Button>
+
+                
+                {submitSuccess && (
+                  <p className="text-green-600 text-sm text-center">
+                    Message sent successfully! We'll get back to you soon.
+                  </p>
+                )}
+                {submitError && (
+                  <p className="text-red-600 text-sm text-center">
+                    {submitError}
+                  </p>
+                )}
               </form>
             </div>
 
@@ -138,7 +210,6 @@ export default function ContactPage() {
         <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-[#2A007A]">Privacy Policy</DialogTitle>
-            {/* Removed the custom X icon and DialogClose component */}
           </DialogHeader>
           <DialogDescription className="space-y-4 text-sm">
             <h3 className="font-semibold text-base">1. Introduction</h3>
